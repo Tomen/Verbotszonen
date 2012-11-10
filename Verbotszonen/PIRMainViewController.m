@@ -7,6 +7,7 @@
 //
 
 #import "PIRMainViewController.h"
+#import "PIRCamera.h"
 
 @interface PIRMainViewController ()
 
@@ -19,6 +20,10 @@
     [super viewWillAppear:animated];
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
     self.mapView.showsUserLocation = YES;
+    
+    [PIRCamera fetchAllOnComplete:^(NSArray *cameras) {
+        [self.mapView addAnnotations:cameras];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

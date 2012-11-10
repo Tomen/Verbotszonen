@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3076CCB1164E655700F63D4B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CCB0164E655700F63D4B /* MapKit.framework */; };
 		3076CCB4164E665800F63D4B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CCB3164E665800F63D4B /* CoreLocation.framework */; };
+		3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCBB164E6D4600F63D4B /* PIRCamera.m */; };
 		30821828164E616A00945A30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821827164E616A00945A30 /* UIKit.framework */; };
 		3082182A164E616A00945A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821829164E616A00945A30 /* Foundation.framework */; };
 		3082182C164E616A00945A30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082182B164E616A00945A30 /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		3076CCB0164E655700F63D4B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3076CCB3164E665800F63D4B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3076CCBA164E6D4600F63D4B /* PIRCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRCamera.h; sourceTree = "<group>"; };
+		3076CCBB164E6D4600F63D4B /* PIRCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRCamera.m; sourceTree = "<group>"; };
 		30821823164E616A00945A30 /* Verbotszonen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verbotszonen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30821827164E616A00945A30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30821829164E616A00945A30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +98,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3076CCB5164E6C6C00F63D4B /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				3082183F164E616A00945A30 /* MainStoryboard_iPhone.storyboard */,
+				30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */,
+				30821845164E616A00945A30 /* PIRMainViewController.h */,
+				30821846164E616A00945A30 /* PIRMainViewController.m */,
+				30821848164E616A00945A30 /* PIRFlipsideViewController.h */,
+				30821849164E616A00945A30 /* PIRFlipsideViewController.m */,
+			);
+			name = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		3076CCB6164E6C7D00F63D4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3076CCBA164E6D4600F63D4B /* PIRCamera.h */,
+				3076CCBB164E6D4600F63D4B /* PIRCamera.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		30821818164E616A00945A30 = {
 			isa = PBXGroup;
 			children = (
@@ -132,12 +157,8 @@
 			children = (
 				30821836164E616A00945A30 /* PIRAppDelegate.h */,
 				30821837164E616A00945A30 /* PIRAppDelegate.m */,
-				3082183F164E616A00945A30 /* MainStoryboard_iPhone.storyboard */,
-				30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */,
-				30821845164E616A00945A30 /* PIRMainViewController.h */,
-				30821846164E616A00945A30 /* PIRMainViewController.m */,
-				30821848164E616A00945A30 /* PIRFlipsideViewController.h */,
-				30821849164E616A00945A30 /* PIRFlipsideViewController.m */,
+				3076CCB5164E6C6C00F63D4B /* Presentation Layer */,
+				3076CCB6164E6C7D00F63D4B /* Model */,
 				3082182E164E616A00945A30 /* Supporting Files */,
 			);
 			path = Verbotszonen;
@@ -292,6 +313,7 @@
 				30821838164E616A00945A30 /* PIRAppDelegate.m in Sources */,
 				30821847164E616A00945A30 /* PIRMainViewController.m in Sources */,
 				3082184A164E616A00945A30 /* PIRFlipsideViewController.m in Sources */,
+				3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
