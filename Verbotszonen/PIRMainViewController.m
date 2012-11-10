@@ -7,8 +7,9 @@
 //
 
 #import "PIRMainViewController.h"
-#import "PIRCamera.h"
 #import "PIRCameraViewController.h"
+#import "PIRCamera.h"
+#import "PIRProhibitionZone.h"
 
 @interface PIRMainViewController ()
 
@@ -24,6 +25,10 @@
     
     [PIRCamera fetchAllOnComplete:^(NSArray *cameras) {
         [self.mapView addAnnotations:cameras];
+    }];
+    
+    [PIRProhibitionZone fetchAllProhibitionZonesOnComplete:^(NSArray *prohibitionZones) {
+        [self.mapView addOverlays:prohibitionZones];
     }];
 }
 
@@ -109,6 +114,18 @@
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     [self performSegueWithIdentifier:@"showCamera" sender:view.annotation];
+}
+
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolygon class]]) {
+        MKPolygonView *overlayView = [[MKPolygonView alloc] initWithOverlay:overlay];
+        overlayView.strokeColor = [UIColor redColor];
+        overlayView.lineWidth = 3;
+        return overlayView;
+    }
+    
+    return nil;
 }
 
 #pragma mark Actions

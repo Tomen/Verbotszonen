@@ -12,6 +12,10 @@
 		3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCBB164E6D4600F63D4B /* PIRCamera.m */; };
 		3076CCBF164E754700F63D4B /* PIRCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCBE164E754700F63D4B /* PIRCameraViewController.m */; };
 		3076CCC3164E823F00F63D4B /* cameras.json in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC2164E823F00F63D4B /* cameras.json */; };
+		3076CCC6164E938B00F63D4B /* PIRProhibitionZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCC5164E938B00F63D4B /* PIRProhibitionZone.m */; };
+		3076CCCA164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC7164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx */; };
+		3076CCCB164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC8164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx */; };
+		3076CCCC164E947000F63D4B /* Alkoholverbotszone_Graz.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC9164E947000F63D4B /* Alkoholverbotszone_Graz.gpx */; };
 		30821828164E616A00945A30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821827164E616A00945A30 /* UIKit.framework */; };
 		3082182A164E616A00945A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821829164E616A00945A30 /* Foundation.framework */; };
 		3082182C164E616A00945A30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082182B164E616A00945A30 /* CoreGraphics.framework */; };
@@ -51,6 +55,11 @@
 		3076CCBE164E754700F63D4B /* PIRCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRCameraViewController.m; sourceTree = "<group>"; };
 		3076CCC0164E819F00F63D4B /* PIRDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIRDefinitions.h; sourceTree = "<group>"; };
 		3076CCC2164E823F00F63D4B /* cameras.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameras.json; sourceTree = "<group>"; };
+		3076CCC4164E938B00F63D4B /* PIRProhibitionZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRProhibitionZone.h; sourceTree = "<group>"; };
+		3076CCC5164E938B00F63D4B /* PIRProhibitionZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRProhibitionZone.m; sourceTree = "<group>"; };
+		3076CCC7164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Alkoholverbotszone_Graz_Mondscheingasse.gpx; sourceTree = "<group>"; };
+		3076CCC8164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Alkoholverbotszone_Graz_Univiertel.gpx; sourceTree = "<group>"; };
+		3076CCC9164E947000F63D4B /* Alkoholverbotszone_Graz.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Alkoholverbotszone_Graz.gpx; sourceTree = "<group>"; };
 		30821823164E616A00945A30 /* Verbotszonen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Verbotszonen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30821827164E616A00945A30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30821829164E616A00945A30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,6 +133,8 @@
 			children = (
 				3076CCBA164E6D4600F63D4B /* PIRCamera.h */,
 				3076CCBB164E6D4600F63D4B /* PIRCamera.m */,
+				3076CCC4164E938B00F63D4B /* PIRProhibitionZone.h */,
+				3076CCC5164E938B00F63D4B /* PIRProhibitionZone.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -131,6 +142,9 @@
 		3076CCC1164E823400F63D4B /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				3076CCC7164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx */,
+				3076CCC8164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx */,
+				3076CCC9164E947000F63D4B /* Alkoholverbotszone_Graz.gpx */,
 				3076CCC2164E823F00F63D4B /* cameras.json */,
 			);
 			name = Ressources;
@@ -294,6 +308,9 @@
 				30821841164E616A00945A30 /* MainStoryboard_iPhone.storyboard in Resources */,
 				30821844164E616A00945A30 /* MainStoryboard_iPad.storyboard in Resources */,
 				3076CCC3164E823F00F63D4B /* cameras.json in Resources */,
+				3076CCCA164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx in Resources */,
+				3076CCCB164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx in Resources */,
+				3076CCCC164E947000F63D4B /* Alkoholverbotszone_Graz.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +351,7 @@
 				3082184A164E616A00945A30 /* PIRFlipsideViewController.m in Sources */,
 				3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */,
 				3076CCBF164E754700F63D4B /* PIRCameraViewController.m in Sources */,
+				3076CCC6164E938B00F63D4B /* PIRProhibitionZone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

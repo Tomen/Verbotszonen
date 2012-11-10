@@ -69,7 +69,7 @@
 #ifdef LOAD_LOCAL_CAMERAS
         NSURL *url = [[NSBundle mainBundle] URLForResource:@"cameras" withExtension:@"json"];
 #else
-        NSURL *url = [NSURL URLWithString:@"http://orwell.at/export.json"]
+        NSURL *url = [NSURL URLWithString:@"http://orwell.at/export.json"];
 #endif
         NSData *camerasData = [NSData dataWithContentsOfURL:url];
         
