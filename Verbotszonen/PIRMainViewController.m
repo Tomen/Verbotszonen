@@ -8,6 +8,7 @@
 
 #import "PIRMainViewController.h"
 #import "PIRCamera.h"
+#import "PIRCameraViewController.h"
 
 @interface PIRMainViewController ()
 
@@ -15,9 +16,9 @@
 
 @implementation PIRMainViewController
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidLoad
 {
-    [super viewWillAppear:animated];
+    [super viewDidLoad];
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
     self.mapView.showsUserLocation = YES;
     
@@ -60,6 +61,11 @@
             popoverController.delegate = self;
         }
     }
+    else if([segue.identifier isEqualToString:@"showCamera"])
+    {
+        PIRCameraViewController *vc = (PIRCameraViewController *)segue.destinationViewController;
+        vc.camera = sender;
+    }
 }
 
 - (IBAction)togglePopover:(id)sender
@@ -76,4 +82,36 @@
     [self setMapView:nil];
     [super viewDidUnload];
 }
+
+#pragma mark MKMapViewDelegate
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    static NSString *cameraAnnotationIdentifier = @"cameraAnnotationIdentifier";
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:cameraAnnotationIdentifier];
+    if (!annotationView) {
+        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:cameraAnnotationIdentifier];
+        pin.pinColor = MKPinAnnotationColorRed;
+        pin.canShowCallout = YES;
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        //[rightButton addTarget:self action:@selector(onTapShowCamera:) forControlEvents:UIControlEventTouchUpInside];
+        pin.rightCalloutAccessoryView = rightButton;
+        return pin;
+    }
+    annotationView.annotation = annotation;
+    return annotationView;
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"showCamera" sender:view.annotation];
+}
+
+#pragma mark Actions
+
+
 @end

@@ -12,6 +12,10 @@
 @interface PIRCamera : NSObject<MKAnnotation>
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *street;
+@property (nonatomic, strong) NSString *zip;
+@property (nonatomic, strong) NSString *town;
+@property (nonatomic, strong) NSString *thumbnail;
 
 -(id)initWithDict:(NSDictionary *)dict;
 +(void)fetchAllOnComplete:(void(^)(NSArray *cameras))onComplete;

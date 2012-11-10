@@ -7,6 +7,7 @@
 //
 
 #import "PIRCamera.h"
+#import "PIRDefinitions.h"
 
 @interface PIRCamera ()
 
@@ -49,11 +50,13 @@
         self.coordinate = CLLocationCoordinate2DMake(lat.doubleValue, lon.doubleValue);
         
         
-        //name
+        //properties
         tempDict = dict[@"properties"];
         self.name = tempDict[@"name"];
-        
-    
+        self.street = tempDict[@"street"];
+        self.zip = tempDict[@"zip"];
+        self.town = tempDict[@"town"];
+        self.thumbnail = tempDict[@"thumbnail"];
     }
     return self;
 }
@@ -63,7 +66,13 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         //fetch camera data
-        NSData *camerasData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://orwell.at/export.json"]];
+#ifdef LOAD_LOCAL_CAMERAS
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"cameras" withExtension:@"json"];
+#else
+        NSURL *url = [NSURL URLWithString:@"http://orwell.at/export.json"]
+#endif
+        NSData *camerasData = [NSData dataWithContentsOfURL:url];
+        
         if (!camerasData) {
             return;
         }
