@@ -30,15 +30,18 @@
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
     [self checkFirstTime];
 
-    
+    /*
     [PIRCamera fetchAllOnComplete:^(NSArray *cameras) {
-        //[self.mapView addAnnotations:cameras];
+        [self.mapView addAnnotations:cameras];
     }];
+     */
     
     [PIRConfig fetchOnComplete:^(PIRConfig *config) {
         for (PIRZone *zone in config.zones) {
             [zone fetchPolygonOnComplete:^(MKPolygon *polygon) {
-                [self.mapView addOverlay:polygon];
+                if (polygon) {
+                    [self.mapView addOverlay:polygon];
+                }
             }];
         }
     }];
