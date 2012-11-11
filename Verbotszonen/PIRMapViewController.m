@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 Piratenpartei Österreichs. All rights reserved.
 //
 
-#import "PIRMainViewController.h"
+#import "PIRMapViewController.h"
 #import "PIRCameraViewController.h"
 #import "PIRCamera.h"
 #import "PIRProhibitionZone.h"
 
-@interface PIRMainViewController ()
+@interface PIRMapViewController ()
 
 @end
 
-@implementation PIRMainViewController
+@implementation PIRMapViewController
 
 -(void)viewDidLoad
 {

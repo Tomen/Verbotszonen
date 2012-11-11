@@ -9,7 +9,7 @@
 #import "PIRFlipsideViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface PIRMainViewController : UIViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate>
+@interface PIRMapViewController : UIViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

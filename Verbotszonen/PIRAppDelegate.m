@@ -12,7 +12,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //show first time view controller
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults valueForKey:@"didCompleteFirstTime"]) {
+        
+    }
     return YES;
 }
 							
