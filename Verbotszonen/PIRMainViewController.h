@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "PIRFirstTimeViewController.h"
 
-@interface PIRMainViewController : UITableViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate, PIRFirstTimeViewControllerDelegate>
+@interface PIRMainViewController : UITableViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate, PIRFirstTimeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

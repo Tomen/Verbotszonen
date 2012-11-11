@@ -15,6 +15,7 @@
 {
     self = [self init];
     if (self) {
+        //Zones
         NSArray *rawZones = dict[@"zones"];
         if (rawZones) {
             NSMutableArray *zones = [NSMutableArray array];

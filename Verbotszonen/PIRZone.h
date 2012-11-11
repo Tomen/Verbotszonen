@@ -17,5 +17,7 @@
 
 -(id)initWithDict:(NSDictionary *)dict;
 -(void)fetchPolygonOnComplete:(void(^)(MKPolygon *polygon))onComplete;
+-(BOOL)coordinateIsWithinZone:(CLLocationCoordinate2D)coordinate;
++(NSArray *)zonesForCoordinate:(CLLocationCoordinate2D)coordinate fromZones:(NSArray *)zones;
 
 @end

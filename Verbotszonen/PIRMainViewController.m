@@ -13,7 +13,9 @@
 #import "PIRConfig.h"
 
 @interface PIRMainViewController ()
-
+@property (nonatomic, strong) NSArray *allZones;
+@property (nonatomic, strong) NSArray *currentZones;
+@property (nonatomic, assign) CLLocationCoordinate2D userCoordinate;
 @end
 
 @implementation PIRMainViewController
@@ -37,8 +39,12 @@
      */
     
     [PIRConfig fetchOnComplete:^(PIRConfig *config) {
+        
+        self.allZones = config.zones;
+        
         for (PIRZone *zone in config.zones) {
             [zone fetchPolygonOnComplete:^(MKPolygon *polygon) {
+                [self updateTable];
                 if (polygon) {
                     [self.mapView addOverlay:polygon];
                 }
@@ -58,6 +64,12 @@
     {
         self.mapView.showsUserLocation = YES;
     }
+}
+
+-(void)updateTable
+{
+    self.currentZones = [PIRZone zonesForCoordinate:self.userCoordinate fromZones:self.allZones];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,6 +178,8 @@
 {
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
         self.mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.002, 0.002));
+        self.userCoordinate = userLocation.coordinate;
+        [self updateTable];
     }
 }
 
@@ -180,6 +194,31 @@
     
     //implicitly will ask the user for permission
     self.mapView.showsUserLocation = YES;
+}
+
+#pragma mark UITableViewDataSource
+
+-(int)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.currentZones.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    }
+    
+    PIRZone *zone = self.currentZones[indexPath.row];
+    
+    cell.textLabel.text = zone.title;
+    return cell;
 }
 
 
