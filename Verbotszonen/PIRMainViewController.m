@@ -9,7 +9,8 @@
 #import "PIRMainViewController.h"
 #import "PIRCameraViewController.h"
 #import "PIRCamera.h"
-#import "PIRProhibitionZone.h"
+#import "PIRZone.h"
+#import "PIRConfig.h"
 
 @interface PIRMainViewController ()
 
@@ -34,11 +35,13 @@
         //[self.mapView addAnnotations:cameras];
     }];
     
-    [PIRProhibitionZone fetchAllProhibitionZonesOnComplete:^(NSArray *prohibitionZones) {
-        [self.mapView addOverlays:prohibitionZones];
+    [PIRConfig fetchOnComplete:^(PIRConfig *config) {
+        for (PIRZone *zone in config.zones) {
+            [zone fetchPolygonOnComplete:^(MKPolygon *polygon) {
+                [self.mapView addOverlay:polygon];
+            }];
+        }
     }];
-    
-
 }
 
 -(void)checkFirstTime

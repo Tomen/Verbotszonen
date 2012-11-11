@@ -12,5 +12,6 @@
 //#define LOAD_LOCAL_CAMERAS
 
 #define PIR_URL_WELCOME @"http://basis.piratenpartei.at/verbotsapp/welcome_ios.html"
+#define PIR_URL_CONFIG  @"http://basis.piratenpartei.at/verbotsapp/config.json"
 
 #endif

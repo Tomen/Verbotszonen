@@ -12,7 +12,7 @@
 		3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCBB164E6D4600F63D4B /* PIRCamera.m */; };
 		3076CCBF164E754700F63D4B /* PIRCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCBE164E754700F63D4B /* PIRCameraViewController.m */; };
 		3076CCC3164E823F00F63D4B /* cameras.json in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC2164E823F00F63D4B /* cameras.json */; };
-		3076CCC6164E938B00F63D4B /* PIRProhibitionZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCC5164E938B00F63D4B /* PIRProhibitionZone.m */; };
+		3076CCC6164E938B00F63D4B /* PIRZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCC5164E938B00F63D4B /* PIRZone.m */; };
 		3076CCCA164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC7164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx */; };
 		3076CCCB164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC8164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx */; };
 		3076CCCC164E947000F63D4B /* Alkoholverbotszone_Graz.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3076CCC9164E947000F63D4B /* Alkoholverbotszone_Graz.gpx */; };
@@ -36,6 +36,7 @@
 		3082185F164E616B00945A30 /* VerbotszonenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3082185E164E616B00945A30 /* VerbotszonenTests.m */; };
 		30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625E816503FBE00F50FB6 /* PIRWebViewController.m */; };
 		30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */; };
+		30D625F016504F9700F50FB6 /* PIRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EF16504F9700F50FB6 /* PIRConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +58,8 @@
 		3076CCBE164E754700F63D4B /* PIRCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRCameraViewController.m; sourceTree = "<group>"; };
 		3076CCC0164E819F00F63D4B /* PIRDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIRDefinitions.h; sourceTree = "<group>"; };
 		3076CCC2164E823F00F63D4B /* cameras.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cameras.json; sourceTree = "<group>"; };
-		3076CCC4164E938B00F63D4B /* PIRProhibitionZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRProhibitionZone.h; sourceTree = "<group>"; };
-		3076CCC5164E938B00F63D4B /* PIRProhibitionZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRProhibitionZone.m; sourceTree = "<group>"; };
+		3076CCC4164E938B00F63D4B /* PIRZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRZone.h; sourceTree = "<group>"; };
+		3076CCC5164E938B00F63D4B /* PIRZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRZone.m; sourceTree = "<group>"; };
 		3076CCC7164E947000F63D4B /* Alkoholverbotszone_Graz_Mondscheingasse.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Alkoholverbotszone_Graz_Mondscheingasse.gpx; sourceTree = "<group>"; };
 		3076CCC8164E947000F63D4B /* Alkoholverbotszone_Graz_Univiertel.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Alkoholverbotszone_Graz_Univiertel.gpx; sourceTree = "<group>"; };
 		3076CCC9164E947000F63D4B /* Alkoholverbotszone_Graz.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Alkoholverbotszone_Graz.gpx; sourceTree = "<group>"; };
@@ -91,6 +92,8 @@
 		30D625E816503FBE00F50FB6 /* PIRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRWebViewController.m; sourceTree = "<group>"; };
 		30D625EA1650435800F50FB6 /* PIRFirstTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRFirstTimeViewController.h; sourceTree = "<group>"; };
 		30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRFirstTimeViewController.m; sourceTree = "<group>"; };
+		30D625EE16504F9600F50FB6 /* PIRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRConfig.h; sourceTree = "<group>"; };
+		30D625EF16504F9700F50FB6 /* PIRConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +146,10 @@
 			children = (
 				3076CCBA164E6D4600F63D4B /* PIRCamera.h */,
 				3076CCBB164E6D4600F63D4B /* PIRCamera.m */,
-				3076CCC4164E938B00F63D4B /* PIRProhibitionZone.h */,
-				3076CCC5164E938B00F63D4B /* PIRProhibitionZone.m */,
+				3076CCC4164E938B00F63D4B /* PIRZone.h */,
+				3076CCC5164E938B00F63D4B /* PIRZone.m */,
+				30D625EE16504F9600F50FB6 /* PIRConfig.h */,
+				30D625EF16504F9700F50FB6 /* PIRConfig.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -361,9 +366,10 @@
 				3082184A164E616A00945A30 /* PIRFlipsideViewController.m in Sources */,
 				3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */,
 				3076CCBF164E754700F63D4B /* PIRCameraViewController.m in Sources */,
-				3076CCC6164E938B00F63D4B /* PIRProhibitionZone.m in Sources */,
+				3076CCC6164E938B00F63D4B /* PIRZone.m in Sources */,
 				30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */,
 				30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */,
+				30D625F016504F9700F50FB6 /* PIRConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,19 +6,22 @@
 //  Copyright (c) 2012 Piratenpartei Österreichs. All rights reserved.
 //
 
-#import "PIRProhibitionZone.h"
+#import "PIRZone.h"
 
-@interface PIRProhibitionZone ()
+@interface PIRZone ()
 @property (nonatomic, assign) NSMutableArray *polygons;
 @end
 
 
 //TE: This is my first time parsing xml. Please forgive me :P
 @interface PIRProhibitionZoneParser : NSObject<NSXMLParserDelegate>
--(PIRProhibitionZone *)parseZoneFromURL:(NSURL *)url;
+
+-(PIRZone *)parseZoneFromData:(NSData *)data;
+
 @property (nonatomic, strong) NSMutableArray *latElements;
 @property (nonatomic, strong) NSMutableArray *lonElements;
 @property (nonatomic, strong) NSMutableArray *polygons;
+
 @end
 
 @implementation PIRProhibitionZoneParser
@@ -30,12 +33,12 @@
 	self.polygons = [NSMutableArray array];
 }
 
--(PIRProhibitionZone *)parseZoneFromURL:(NSURL *)url
+-(PIRZone *)parseZoneFromData:(NSData *)data
 {
     [self reset];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     parser.delegate = self;
-    PIRProhibitionZone *zone = [PIRProhibitionZone new];
+    PIRZone *zone = [PIRZone new];
     [parser parse];
     
 	zone.polygons = self.polygons;
@@ -77,33 +80,53 @@
 
 @end
 
-@implementation PIRProhibitionZone
+@implementation PIRZone
 
-+(void)fetchAllProhibitionZonesOnComplete:(void(^)(NSArray *prohibitionZones))onComplete
+-(id)initWithDict:(NSDictionary *)dict
+{
+    self = [self init];
+    if (self) {
+        self.title = dict[@"title"];
+        self.gpx = dict[@"gpx"];
+        self.description = dict[@"description"];
+    }
+    return self;
+}
+
+-(void)fetchPolygonOnComplete:(void(^)(MKPolygon *polygon))onComplete
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-		NSArray *gpxURLs = [[NSBundle mainBundle] URLsForResourcesWithExtension:@"gpx" subdirectory:@""];
-		NSMutableArray *prohibitionZones = [NSMutableArray array];
+        NSURL *url = [NSURL URLWithString:self.gpx];
+        if (!url) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                onComplete(nil);
+            });
+            return;
+        }
         
-		for(NSURL *url in gpxURLs) {
-			PIRProhibitionZoneParser *parser = [PIRProhibitionZoneParser new];
-			PIRProhibitionZone *zone = [parser parseZoneFromURL:url];
-            
-			MKPolygon *polygon = [zone.polygons objectAtIndex:0];
-            
-			/* the first polygon should be the outer bounds */
-			if(zone.polygons.count > 1) {
-                
-				polygon = [MKPolygon polygonWithPoints:polygon.points
-                                                 count:polygon.pointCount interiorPolygons:[zone.polygons subarrayWithRange:NSMakeRange(1, zone.polygons.count-1)] ];
-			}
-            
-			[prohibitionZones addObject:polygon];
-		}
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (!data) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                onComplete(nil);
+            });
+            return;
+        }
+        
+        PIRProhibitionZoneParser *parser = [PIRProhibitionZoneParser new];
+        PIRZone *zone = [parser parseZoneFromData:data];
+        
+        MKPolygon *polygon = [zone.polygons objectAtIndex:0];
+        
+        /* the first polygon should be the outer bounds */
+        if(zone.polygons.count > 1) {
+            polygon = [MKPolygon polygonWithPoints:polygon.points
+                                             count:polygon.pointCount interiorPolygons:[zone.polygons subarrayWithRange:NSMakeRange(1, zone.polygons.count-1)] ];
+        }
+        
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            onComplete(prohibitionZones);
+            onComplete(polygon);
         });
     });
     

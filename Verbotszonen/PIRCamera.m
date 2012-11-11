@@ -74,6 +74,9 @@
         NSData *camerasData = [NSData dataWithContentsOfURL:url];
         
         if (!camerasData) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                onComplete(nil);
+            });
             return;
         }
         
@@ -82,6 +85,9 @@
         NSDictionary *camerasDict = [NSJSONSerialization JSONObjectWithData:camerasData options:0 error:&error];
         if (error) {
             NSLog(@"error while parsing json: %@", [error description]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                onComplete(nil);
+            });
             return;
         }
         
