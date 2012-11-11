@@ -6,25 +6,30 @@
 //  Copyright (c) 2012 Piratenpartei Österreichs. All rights reserved.
 //
 
-#import "PIRMapViewController.h"
+#import "PIRMainViewController.h"
 #import "PIRCameraViewController.h"
 #import "PIRCamera.h"
 #import "PIRProhibitionZone.h"
 
-@interface PIRMapViewController ()
+@interface PIRMainViewController ()
 
 @end
 
-@implementation PIRMapViewController
+@implementation PIRMainViewController
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 200)];
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.mapView.delegate = self;
+    self.tableView.tableHeaderView = self.mapView;
+    
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
     self.mapView.showsUserLocation = YES;
     
     [PIRCamera fetchAllOnComplete:^(NSArray *cameras) {
-        [self.mapView addAnnotations:cameras];
+        //[self.mapView addAnnotations:cameras];
     }];
     
     [PIRProhibitionZone fetchAllProhibitionZonesOnComplete:^(NSArray *prohibitionZones) {

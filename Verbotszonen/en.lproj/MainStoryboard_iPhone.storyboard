@@ -5,24 +5,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller - Verbotszonen-->
+        <!--Main View Controller - Verbotszonen-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="PIRMapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
+                <viewController id="2" customClass="PIRMainViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6Zc-DE-Jzs">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="LxG-AT-tGd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="2" id="c9c-pP-MXa"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="2" id="2Wx-Af-b1H"/>
+                            <outlet property="delegate" destination="2" id="P6e-Yo-U8Y"/>
+                        </connections>
+                    </tableView>
                     <navigationItem key="navigationItem" title="Verbotszonen" id="57S-Ua-LIU">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="4vf-1T-iY2">
                             <connections>
@@ -31,13 +26,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="LxG-AT-tGd" id="kow-Ar-nFZ"/>
                         <segue destination="o9K-fu-W54" kind="push" identifier="showCamera" id="UEE-SC-eNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475" y="182"/>
+            <point key="canvasLocation" x="405" y="182"/>
         </scene>
         <!--Flipside View Controller-->
         <scene sceneID="9">
@@ -110,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCX-vo-cxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-25"/>
+            <point key="canvasLocation" x="956" y="-69"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lTd-ac-qRl">
@@ -123,12 +117,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="xfA-mb-b51"/>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="T1l-8O-olS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIG-3A-bRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-51" y="182"/>
+            <point key="canvasLocation" x="-109" y="182"/>
         </scene>
     </scenes>
     <classes>
@@ -145,6 +139,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRFlipsideViewController.h"/>
             <relationships>
                 <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+        <class className="PIRMainViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="togglePopover:"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
     </classes>
