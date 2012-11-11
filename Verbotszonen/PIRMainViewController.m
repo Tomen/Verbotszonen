@@ -24,12 +24,29 @@
 {
     [super viewDidLoad];
     
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 200)];
+    CGFloat width = self.tableView.bounds.size.width;
+    CGFloat mapHeight = 180;
+    
+    UIImageView *mapHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar.png"]];
+    
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, mapHeaderView.bounds.size.height, width, mapHeight)];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.mapView.delegate = self;
-    self.tableView.tableHeaderView = self.mapView;
-    
+    self.mapView.mapType = MKMapTypeHybrid;
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
+    
+    UIImageView *mapFooterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listheader.png"]];
+    CGRect mapFooterViewFrame = mapFooterView.frame;
+    mapFooterViewFrame.origin.y = self.mapView.frame.origin.y + self.mapView.bounds.size.height;
+    mapFooterView.frame = mapFooterViewFrame;
+    
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, mapFooterViewFrame.origin.y + mapFooterViewFrame.size.height)];
+    [tableHeaderView addSubview:mapHeaderView];
+    [tableHeaderView addSubview:self.mapView];
+    [tableHeaderView addSubview:mapFooterView];
+    
+    self.tableView.tableHeaderView = tableHeaderView;
+    
     [self checkFirstTime];
 
     /*
