@@ -8,8 +8,9 @@
 
 #import "PIRFlipsideViewController.h"
 #import <MapKit/MapKit.h>
+#import "PIRFirstTimeViewController.h"
 
-@interface PIRMainViewController : UITableViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate>
+@interface PIRMainViewController : UITableViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate, PIRFirstTimeViewControllerDelegate>
 
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

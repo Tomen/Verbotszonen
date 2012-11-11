@@ -34,6 +34,8 @@
 		30821854164E616B00945A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821829164E616A00945A30 /* Foundation.framework */; };
 		3082185C164E616B00945A30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3082185A164E616B00945A30 /* InfoPlist.strings */; };
 		3082185F164E616B00945A30 /* VerbotszonenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3082185E164E616B00945A30 /* VerbotszonenTests.m */; };
+		30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625E816503FBE00F50FB6 /* PIRWebViewController.m */; };
+		30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		3082185B164E616B00945A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3082185D164E616B00945A30 /* VerbotszonenTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerbotszonenTests.h; sourceTree = "<group>"; };
 		3082185E164E616B00945A30 /* VerbotszonenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerbotszonenTests.m; sourceTree = "<group>"; };
+		30D625E716503FBE00F50FB6 /* PIRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRWebViewController.h; sourceTree = "<group>"; };
+		30D625E816503FBE00F50FB6 /* PIRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRWebViewController.m; sourceTree = "<group>"; };
+		30D625EA1650435800F50FB6 /* PIRFirstTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRFirstTimeViewController.h; sourceTree = "<group>"; };
+		30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRFirstTimeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,10 @@
 				30821849164E616A00945A30 /* PIRFlipsideViewController.m */,
 				3076CCBD164E754700F63D4B /* PIRCameraViewController.h */,
 				3076CCBE164E754700F63D4B /* PIRCameraViewController.m */,
+				30D625E716503FBE00F50FB6 /* PIRWebViewController.h */,
+				30D625E816503FBE00F50FB6 /* PIRWebViewController.m */,
+				30D625EA1650435800F50FB6 /* PIRFirstTimeViewController.h */,
+				30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */,
 			);
 			name = "Presentation Layer";
 			sourceTree = "<group>";
@@ -352,6 +362,8 @@
 				3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */,
 				3076CCBF164E754700F63D4B /* PIRCameraViewController.m in Sources */,
 				3076CCC6164E938B00F63D4B /* PIRProhibitionZone.m in Sources */,
+				30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */,
+				30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,13 +20,15 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 200)];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.mapView.delegate = self;
     self.tableView.tableHeaderView = self.mapView;
     
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
-    self.mapView.showsUserLocation = YES;
+    [self checkFirstTime];
+
     
     [PIRCamera fetchAllOnComplete:^(NSArray *cameras) {
         //[self.mapView addAnnotations:cameras];
@@ -35,6 +37,21 @@
     [PIRProhibitionZone fetchAllProhibitionZonesOnComplete:^(NSArray *prohibitionZones) {
         [self.mapView addOverlays:prohibitionZones];
     }];
+    
+
+}
+
+-(void)checkFirstTime
+{
+    //show first time view controller
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults valueForKey:@"didCompleteFirstTime"]) {
+        [self performSegueWithIdentifier:@"showFirstTime" sender:nil];
+    }
+    else
+    {
+        self.mapView.showsUserLocation = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,6 +92,11 @@
     {
         PIRCameraViewController *vc = (PIRCameraViewController *)segue.destinationViewController;
         vc.camera = sender;
+    }
+    else if([segue.identifier isEqualToString:@"showFirstTime"])
+    {
+        PIRFirstTimeViewController *vc = (PIRFirstTimeViewController *)segue.destinationViewController;
+        vc.delegate = self;
     }
 }
 
@@ -134,7 +156,25 @@
     return nil;
 }
 
-#pragma mark Actions
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+        self.mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.002, 0.002));
+    }
+}
+
+#pragma mark PIRFirstTimeViewControllerDelegate
+
+-(void)firstTimeViewControllerDidComplete:(UIViewController *)vc
+{
+    [vc dismissModalViewControllerAnimated:YES];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:@YES forKey:@"didCompleteFirstTime"];
+    [defaults synchronize];
+    
+    //implicitly will ask the user for permission
+    self.mapView.showsUserLocation = YES;
+}
 
 
 @end

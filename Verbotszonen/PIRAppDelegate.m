@@ -12,11 +12,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //show first time view controller
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults valueForKey:@"didCompleteFirstTime"]) {
-        
-    }
     return YES;
 }
 							
