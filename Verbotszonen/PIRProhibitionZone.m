@@ -9,16 +9,16 @@
 #import "PIRProhibitionZone.h"
 
 @interface PIRProhibitionZone ()
-@property (nonatomic, assign) CLLocationCoordinate2D *coordinates;
-@property (nonatomic, assign) int count;
+@property (nonatomic, assign) NSMutableArray *polygons;
 @end
 
 
-//This is my first time parsing xml. Please forgive me :P
+//TE: This is my first time parsing xml. Please forgive me :P
 @interface PIRProhibitionZoneParser : NSObject<NSXMLParserDelegate>
 -(PIRProhibitionZone *)parseZoneFromURL:(NSURL *)url;
 @property (nonatomic, strong) NSMutableArray *latElements;
 @property (nonatomic, strong) NSMutableArray *lonElements;
+@property (nonatomic, strong) NSMutableArray *polygons;
 @end
 
 @implementation PIRProhibitionZoneParser
@@ -27,6 +27,7 @@
 {
     self.latElements = [NSMutableArray array];
     self.lonElements = [NSMutableArray array];
+	self.polygons = [NSMutableArray array];
 }
 
 -(PIRProhibitionZone *)parseZoneFromURL:(NSURL *)url
@@ -37,15 +38,32 @@
     PIRProhibitionZone *zone = [PIRProhibitionZone new];
     [parser parse];
     
-    //Create the coordinates
-    zone.count = self.latElements.count;
-    zone.coordinates = malloc(zone.count * sizeof(CLLocationCoordinate2D));
-    for (int i = 0; i < zone.count; i++) {
-        zone.coordinates[i].latitude = ((NSNumber *)self.latElements[i]).doubleValue;
-        zone.coordinates[i].longitude = ((NSNumber *)self.lonElements[i]).doubleValue;
-    }
+	zone.polygons = self.polygons;
     
     return zone;
+}
+
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    
+	/* parse all trkseg nodes into different polygons */
+    if([elementName isEqualToString:@"trk"]) {
+        
+		int n = self.latElements.count;
+		CLLocationCoordinate2D *coordinates = malloc(n * sizeof(CLLocationCoordinate2D));
+        
+		for (int i = 0; i < n; i++) {
+            
+			coordinates[i] = CLLocationCoordinate2DMake(
+                                                        [self.latElements[i] doubleValue], [self.lonElements[i] doubleValue] );
+		}
+        
+		MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:n];
+		[self.polygons addObject: polygon];
+		free(coordinates);
+        
+		[self.latElements removeAllObjects];
+		[self.lonElements removeAllObjects];
+	}
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
@@ -59,38 +77,34 @@
 
 @end
 
-
-
-
 @implementation PIRProhibitionZone
 
 +(void)fetchAllProhibitionZonesOnComplete:(void(^)(NSArray *prohibitionZones))onComplete
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSURL *url = [[NSBundle mainBundle] URLForResource:@"Alkoholverbotszone_Graz" withExtension:@"gpx"];
-        PIRProhibitionZoneParser *parser = [PIRProhibitionZoneParser new];
-        PIRProhibitionZone *zone = [parser parseZoneFromURL:url];
-
-        NSMutableArray *prohibitionZones = [NSMutableArray array];
-        MKPolygon *polygon = [MKPolygon polygonWithCoordinates:zone.coordinates count:zone.count];
-        [prohibitionZones addObject:polygon];
         
+		NSArray *gpxURLs = [[NSBundle mainBundle] URLsForResourcesWithExtension:@"gpx" subdirectory:@""];
+		NSMutableArray *prohibitionZones = [NSMutableArray array];
         
-        //CLLocationCoordinate2D coordinates[3];
-        //    coordinates[0] = CLLocationCoordinate2DMake(47.06692343082683, 15.444714708591887);
-        //    coordinates[1] = CLLocationCoordinate2DMake(47.066099884065004, 15.444723799233914);
-        //    coordinates[2] = CLLocationCoordinate2DMake(47.0661563012082, 15.444461180686384);
-        //coordinates[0] = CLLocationCoordinate2DMake(47, 15);
-        //coordinates[1] = CLLocationCoordinate2DMake(48, 15);
-        //coordinates[2] = CLLocationCoordinate2DMake(47, 16);
-        
-        
-
+		for(NSURL *url in gpxURLs) {
+			PIRProhibitionZoneParser *parser = [PIRProhibitionZoneParser new];
+			PIRProhibitionZone *zone = [parser parseZoneFromURL:url];
+            
+			MKPolygon *polygon = [zone.polygons objectAtIndex:0];
+            
+			/* the first polygon should be the outer bounds */
+			if(zone.polygons.count > 1) {
+                
+				polygon = [MKPolygon polygonWithPoints:polygon.points
+                                                 count:polygon.pointCount interiorPolygons:[zone.polygons subarrayWithRange:NSMakeRange(1, zone.polygons.count-1)] ];
+			}
+            
+			[prohibitionZones addObject:polygon];
+		}
         
         dispatch_async(dispatch_get_main_queue(), ^{
             onComplete(prohibitionZones);
         });
-        
     });
     
 }

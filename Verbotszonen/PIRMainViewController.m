@@ -121,7 +121,8 @@
     if ([overlay isKindOfClass:[MKPolygon class]]) {
         MKPolygonView *overlayView = [[MKPolygonView alloc] initWithOverlay:overlay];
         overlayView.strokeColor = [UIColor redColor];
-        overlayView.lineWidth = 3;
+        overlayView.lineWidth = 1;
+        overlayView.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.25];
         return overlayView;
     }
     
