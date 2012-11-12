@@ -84,11 +84,6 @@
         }
         
         [PIRNotification scheduleNotifications:config.notifications];
-        
-        //the share feature is only enabled in ios6
-        if (config.activityItems && NSClassFromString(@"UIActivityViewController")) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(onTapShare)];
-        }
     }];
 }
 
@@ -153,12 +148,6 @@
 - (void)viewDidUnload {
     [self setMapView:nil];
     [super viewDidUnload];
-}
-
--(void)onTapShare
-{
-    UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:self.activityItems applicationActivities:nil];
-    [self presentModalViewController:vc animated:YES];
 }
 
 #pragma mark MKMapViewDelegate
