@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSArray *zones;
 @property (nonatomic, strong) NSArray *notifications;
+@property (nonatomic, strong) NSArray *activityItems; //for sharing
 
 +(void)fetchOnComplete:(void(^)(PIRConfig *config))onComplete;
 

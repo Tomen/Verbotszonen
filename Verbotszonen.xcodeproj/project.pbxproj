@@ -44,6 +44,7 @@
 		3099B39916519C1A002CB19B /* PIRCameraCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B39816519C1A002CB19B /* PIRCameraCell.m */; };
 		3099B39D16519C3C002CB19B /* PIRZoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B39C16519C3C002CB19B /* PIRZoneCell.m */; };
 		3099B3A41651A01A002CB19B /* PIRMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B3A31651A01A002CB19B /* PIRMapViewController.m */; };
+		30B369B01651B00200C42468 /* PIRZoneWarningCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B369AF1651B00200C42468 /* PIRZoneWarningCell.m */; };
 		30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625E816503FBE00F50FB6 /* PIRWebViewController.m */; };
 		30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */; };
 		30D625F016504F9700F50FB6 /* PIRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EF16504F9700F50FB6 /* PIRConfig.m */; };
@@ -115,6 +116,8 @@
 		3099B39C16519C3C002CB19B /* PIRZoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRZoneCell.m; sourceTree = "<group>"; };
 		3099B3A21651A01A002CB19B /* PIRMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRMapViewController.h; sourceTree = "<group>"; };
 		3099B3A31651A01A002CB19B /* PIRMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRMapViewController.m; sourceTree = "<group>"; };
+		30B369AE1651B00200C42468 /* PIRZoneWarningCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRZoneWarningCell.h; sourceTree = "<group>"; };
+		30B369AF1651B00200C42468 /* PIRZoneWarningCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRZoneWarningCell.m; sourceTree = "<group>"; };
 		30D625E716503FBE00F50FB6 /* PIRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRWebViewController.h; sourceTree = "<group>"; };
 		30D625E816503FBE00F50FB6 /* PIRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRWebViewController.m; sourceTree = "<group>"; };
 		30D625EA1650435800F50FB6 /* PIRFirstTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRFirstTimeViewController.h; sourceTree = "<group>"; };
@@ -304,6 +307,8 @@
 				3099B39816519C1A002CB19B /* PIRCameraCell.m */,
 				3099B39B16519C3C002CB19B /* PIRZoneCell.h */,
 				3099B39C16519C3C002CB19B /* PIRZoneCell.m */,
+				30B369AE1651B00200C42468 /* PIRZoneWarningCell.h */,
+				30B369AF1651B00200C42468 /* PIRZoneWarningCell.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				3099B39916519C1A002CB19B /* PIRCameraCell.m in Sources */,
 				3099B39D16519C3C002CB19B /* PIRZoneCell.m in Sources */,
 				3099B3A41651A01A002CB19B /* PIRMapViewController.m in Sources */,
+				30B369B01651B00200C42468 /* PIRZoneWarningCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

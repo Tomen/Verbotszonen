@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *currentZones;
 @property (nonatomic, assign) CLLocationCoordinate2D userCoordinate;
 @property (nonatomic, strong) NSArray *cameras;
+@property (nonatomic, strong) NSArray *activityItems;
 @end
 
 @implementation PIRMainViewController
@@ -77,6 +78,11 @@
         }
         
         [PIRNotification scheduleNotifications:config.notifications];
+        
+        //the share feature is only enabled in ios6
+        if (config.activityItems && NSClassFromString(@"UIActivityViewController")) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(onTapShare)];
+        }
     }];
 }
 
@@ -141,6 +147,12 @@
 - (void)viewDidUnload {
     [self setMapView:nil];
     [super viewDidUnload];
+}
+
+-(void)onTapShare
+{
+    UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:self.activityItems applicationActivities:nil];
+    [self presentModalViewController:vc animated:YES];
 }
 
 #pragma mark MKMapViewDelegate
@@ -216,7 +228,7 @@
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.currentZones.count + 1; //+1 for camera
+    return self.currentZones.count + 1 + (([CLLocationManager regionMonitoringAvailable] && [CLLocationManager regionMonitoringEnabled]) ? 1 : 0); //+1 for camera + 1 for zone warning
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -229,13 +241,19 @@
         reuseIdentifier = @"zoneCell";
         model = self.currentZones[indexPath.row];
     }
-    else //Camera
+    else if(indexPath.row == self.currentZones.count) //Camera
     {
         reuseIdentifier = @"cameraCell";
         model = self.cameras;
     }
+    else //Zone warning
+    {
+        reuseIdentifier = @"zoneWarningCell";
+        model = self.allZones;
+    }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    
     [cell performSelector:@selector(setModel:) withObject:model];
     
     return cell;
@@ -255,7 +273,7 @@
             [self performSegueWithIdentifier:@"showZoneDetails" sender:zone];
         }
     }
-    else
+    else if(indexPath.row == self.currentZones.count) //Camera
     {
         [self performSegueWithIdentifier:@"showMap" sender:nil];
     }

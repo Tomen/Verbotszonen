@@ -12,7 +12,6 @@
 @property (nonatomic, strong) MKPolygon *polygon;
 @end
 
-
 //TE: This is my first time parsing xml. Please forgive me :P
 @interface PIRPolygonParser : NSObject<NSXMLParserDelegate>
 
@@ -153,6 +152,39 @@
     
     return result;
 }
+
+-(void)startMonitoring
+{
+    CLRegion *region = self.boundingRegion;
+    if (region) {
+        [[CLLocationManager new] startMonitoringForRegion:region];
+    }
+}
+
+//TE: code via https://gist.github.com/3402711
+-(CLRegion *)boundingRegion
+{
+    if (!self.polygon) {
+        return nil;
+    }
+    
+    MKMapRect mRect = self.polygon.boundingMapRect;
+    MKMapPoint neMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), mRect.origin.y);
+    MKMapPoint swMapPoint = MKMapPointMake(mRect.origin.x, MKMapRectGetMaxY(mRect));
+    CLLocationCoordinate2D neCoord = MKCoordinateForMapPoint(neMapPoint);
+    CLLocationCoordinate2D swCoord = MKCoordinateForMapPoint(swMapPoint);
+
+    //distance
+    CLLocation *startLoc = [[CLLocation alloc] initWithLatitude:neCoord.latitude longitude:neCoord.longitude];
+	CLLocation *endLoc = [[CLLocation alloc] initWithLatitude:swCoord.latitude longitude:swCoord.longitude];
+	CLLocationDistance diameter = [startLoc distanceFromLocation:endLoc];
+    
+    MKCoordinateRegion coordinateRegion = MKCoordinateRegionForMapRect(mRect);
+    
+    CLRegion *region = [[CLRegion alloc] initCircularRegionWithCenter: coordinateRegion.center radius:(diameter/2) identifier:self.gpx];
+    return region;
+}
+
 
 
 @end
