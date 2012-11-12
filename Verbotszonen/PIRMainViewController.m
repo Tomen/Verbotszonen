@@ -11,6 +11,7 @@
 #import "PIRCamera.h"
 #import "PIRZone.h"
 #import "PIRConfig.h"
+#import "PIRDefinitions.h"
 
 @interface PIRMainViewController ()
 @property (nonatomic, strong) NSArray *allZones;
@@ -69,6 +70,8 @@
                 }
             }];
         }
+        
+        [PIRNotification scheduleNotifications:config.notifications];
     }];
 }
 
@@ -118,6 +121,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showAlternate"]) {
         [[segue destinationViewController] setDelegate:self];
+        PIRWebViewController *vc = (PIRWebViewController *)segue.destinationViewController;
+        vc.urlPath = PIR_URL_ABOUT;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];

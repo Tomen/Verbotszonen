@@ -17,6 +17,7 @@
 		3013B330165177E50004090D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013B326165177E50004090D /* Icon@2x.png */; };
 		3013B331165177E50004090D /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013B327165177E50004090D /* iTunesArtwork.png */; };
 		3013B332165177E50004090D /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3013B328165177E50004090D /* iTunesArtwork@2x.png */; };
+		3013B335165189C90004090D /* PIRNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013B334165189C90004090D /* PIRNotification.m */; };
 		3076CCB1164E655700F63D4B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CCB0164E655700F63D4B /* MapKit.framework */; };
 		3076CCB4164E665800F63D4B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CCB3164E665800F63D4B /* CoreLocation.framework */; };
 		3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076CCBB164E6D4600F63D4B /* PIRCamera.m */; };
@@ -71,6 +72,8 @@
 		3013B326165177E50004090D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		3013B327165177E50004090D /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		3013B328165177E50004090D /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		3013B333165189C90004090D /* PIRNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRNotification.h; sourceTree = "<group>"; };
+		3013B334165189C90004090D /* PIRNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRNotification.m; sourceTree = "<group>"; };
 		3076CCB0164E655700F63D4B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3076CCB3164E665800F63D4B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3076CCBA164E6D4600F63D4B /* PIRCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRCamera.h; sourceTree = "<group>"; };
@@ -183,12 +186,14 @@
 		3076CCB6164E6C7D00F63D4B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				30D625EE16504F9600F50FB6 /* PIRConfig.h */,
+				30D625EF16504F9700F50FB6 /* PIRConfig.m */,
 				3076CCBA164E6D4600F63D4B /* PIRCamera.h */,
 				3076CCBB164E6D4600F63D4B /* PIRCamera.m */,
 				3076CCC4164E938B00F63D4B /* PIRZone.h */,
 				3076CCC5164E938B00F63D4B /* PIRZone.m */,
-				30D625EE16504F9600F50FB6 /* PIRConfig.h */,
-				30D625EF16504F9700F50FB6 /* PIRConfig.m */,
+				3013B333165189C90004090D /* PIRNotification.h */,
+				3013B334165189C90004090D /* PIRNotification.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */,
 				30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */,
 				30D625F016504F9700F50FB6 /* PIRConfig.m in Sources */,
+				3013B335165189C90004090D /* PIRNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

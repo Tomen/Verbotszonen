@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PIRZone.h"
+#import "PIRNotification.h"
 
 @interface PIRConfig : NSObject
 
 @property (nonatomic, strong) NSArray *zones;
+@property (nonatomic, strong) NSArray *notifications;
 
 +(void)fetchOnComplete:(void(^)(PIRConfig *config))onComplete;
 

@@ -13,5 +13,6 @@
 
 #define PIR_URL_WELCOME @"http://basis.piratenpartei.at/verbotsapp/welcome_ios.html"
 #define PIR_URL_CONFIG  @"http://basis.piratenpartei.at/verbotsapp/config.json"
+#define PIR_URL_ABOUT   @"http://basis.piratenpartei.at/verbotsapp/about_ios.html"
 
 #endif

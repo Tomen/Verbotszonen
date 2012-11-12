@@ -9,6 +9,7 @@
 #import "PIRConfig.h"
 #import "PIRDefinitions.h"
 
+
 @implementation PIRConfig
 
 -(id)initWithDict:(NSDictionary *)dict
@@ -26,6 +27,19 @@
                 }
             }
             self.zones = zones;
+        }
+        
+        //Notifications
+        NSArray *rawNotifications = dict[@"notifications"];
+        if (rawNotifications) {
+            NSMutableArray *notifications = [NSMutableArray array];
+            for (NSDictionary *rawNotification in rawNotifications) {
+                PIRNotification *notification = [[PIRNotification alloc] initWithDict:rawNotification];
+                if (notification) {
+                    [notifications addObject:notification];
+                }
+            }
+            self.notifications = notifications;
         }
     }
     return self;
