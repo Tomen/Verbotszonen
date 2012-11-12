@@ -38,6 +38,7 @@
     self.mapView.delegate = self;
     self.mapView.mapType = MKMapTypeHybrid;
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
+    self.mapView.userInteractionEnabled = NO;
     
     UIImageView *mapFooterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listheader.png"]];
     CGRect mapFooterViewFrame = mapFooterView.frame;
