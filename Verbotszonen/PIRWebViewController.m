@@ -29,6 +29,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.webView.scrollView.bounces = NO;
     
     NSURL *url = [NSURL URLWithString:self.urlPath];
     if (!url) {
