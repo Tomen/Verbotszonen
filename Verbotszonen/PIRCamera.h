@@ -20,4 +20,6 @@
 -(id)initWithDict:(NSDictionary *)dict;
 +(void)fetchAllOnComplete:(void(^)(NSArray *cameras))onComplete;
 
++(int)nearCameraCountForCameras:(NSArray *)cameras coordinate:(CLLocationCoordinate2D)coordinate;
+
 @end

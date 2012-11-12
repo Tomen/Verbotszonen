@@ -36,12 +36,14 @@
 		30821841164E616A00945A30 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3082183F164E616A00945A30 /* MainStoryboard_iPhone.storyboard */; };
 		30821844164E616A00945A30 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */; };
 		30821847164E616A00945A30 /* PIRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30821846164E616A00945A30 /* PIRMainViewController.m */; };
-		3082184A164E616A00945A30 /* PIRFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30821849164E616A00945A30 /* PIRFlipsideViewController.m */; };
 		30821852164E616B00945A30 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821851164E616B00945A30 /* SenTestingKit.framework */; };
 		30821853164E616B00945A30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821827164E616A00945A30 /* UIKit.framework */; };
 		30821854164E616B00945A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821829164E616A00945A30 /* Foundation.framework */; };
 		3082185C164E616B00945A30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3082185A164E616B00945A30 /* InfoPlist.strings */; };
 		3082185F164E616B00945A30 /* VerbotszonenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3082185E164E616B00945A30 /* VerbotszonenTests.m */; };
+		3099B39916519C1A002CB19B /* PIRCameraCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B39816519C1A002CB19B /* PIRCameraCell.m */; };
+		3099B39D16519C3C002CB19B /* PIRZoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B39C16519C3C002CB19B /* PIRZoneCell.m */; };
+		3099B3A41651A01A002CB19B /* PIRMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3099B3A31651A01A002CB19B /* PIRMapViewController.m */; };
 		30D625E916503FBE00F50FB6 /* PIRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625E816503FBE00F50FB6 /* PIRWebViewController.m */; };
 		30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */; };
 		30D625F016504F9700F50FB6 /* PIRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D625EF16504F9700F50FB6 /* PIRConfig.m */; };
@@ -101,14 +103,18 @@
 		30821843164E616A00945A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		30821845164E616A00945A30 /* PIRMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIRMainViewController.h; sourceTree = "<group>"; };
 		30821846164E616A00945A30 /* PIRMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIRMainViewController.m; sourceTree = "<group>"; };
-		30821848164E616A00945A30 /* PIRFlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIRFlipsideViewController.h; sourceTree = "<group>"; };
-		30821849164E616A00945A30 /* PIRFlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIRFlipsideViewController.m; sourceTree = "<group>"; };
 		30821850164E616B00945A30 /* VerbotszonenTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerbotszonenTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30821851164E616B00945A30 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		30821859164E616B00945A30 /* VerbotszonenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VerbotszonenTests-Info.plist"; sourceTree = "<group>"; };
 		3082185B164E616B00945A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3082185D164E616B00945A30 /* VerbotszonenTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerbotszonenTests.h; sourceTree = "<group>"; };
 		3082185E164E616B00945A30 /* VerbotszonenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerbotszonenTests.m; sourceTree = "<group>"; };
+		3099B39716519C1A002CB19B /* PIRCameraCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRCameraCell.h; sourceTree = "<group>"; };
+		3099B39816519C1A002CB19B /* PIRCameraCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRCameraCell.m; sourceTree = "<group>"; };
+		3099B39B16519C3C002CB19B /* PIRZoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRZoneCell.h; sourceTree = "<group>"; };
+		3099B39C16519C3C002CB19B /* PIRZoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRZoneCell.m; sourceTree = "<group>"; };
+		3099B3A21651A01A002CB19B /* PIRMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRMapViewController.h; sourceTree = "<group>"; };
+		3099B3A31651A01A002CB19B /* PIRMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRMapViewController.m; sourceTree = "<group>"; };
 		30D625E716503FBE00F50FB6 /* PIRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRWebViewController.h; sourceTree = "<group>"; };
 		30D625E816503FBE00F50FB6 /* PIRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRWebViewController.m; sourceTree = "<group>"; };
 		30D625EA1650435800F50FB6 /* PIRFirstTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRFirstTimeViewController.h; sourceTree = "<group>"; };
@@ -169,16 +175,15 @@
 			children = (
 				3082183F164E616A00945A30 /* MainStoryboard_iPhone.storyboard */,
 				30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */,
-				30821845164E616A00945A30 /* PIRMainViewController.h */,
-				30821846164E616A00945A30 /* PIRMainViewController.m */,
-				30821848164E616A00945A30 /* PIRFlipsideViewController.h */,
-				30821849164E616A00945A30 /* PIRFlipsideViewController.m */,
+				3099B39E16519C43002CB19B /* Main */,
 				3076CCBD164E754700F63D4B /* PIRCameraViewController.h */,
 				3076CCBE164E754700F63D4B /* PIRCameraViewController.m */,
 				30D625E716503FBE00F50FB6 /* PIRWebViewController.h */,
 				30D625E816503FBE00F50FB6 /* PIRWebViewController.m */,
 				30D625EA1650435800F50FB6 /* PIRFirstTimeViewController.h */,
 				30D625EB1650435800F50FB6 /* PIRFirstTimeViewController.m */,
+				3099B3A21651A01A002CB19B /* PIRMapViewController.h */,
+				3099B3A31651A01A002CB19B /* PIRMapViewController.m */,
 			);
 			name = "Presentation Layer";
 			sourceTree = "<group>";
@@ -288,6 +293,19 @@
 				3082185A164E616B00945A30 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3099B39E16519C43002CB19B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				30821845164E616A00945A30 /* PIRMainViewController.h */,
+				30821846164E616A00945A30 /* PIRMainViewController.m */,
+				3099B39716519C1A002CB19B /* PIRCameraCell.h */,
+				3099B39816519C1A002CB19B /* PIRCameraCell.m */,
+				3099B39B16519C3C002CB19B /* PIRZoneCell.h */,
+				3099B39C16519C3C002CB19B /* PIRZoneCell.m */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +438,6 @@
 				30821834164E616A00945A30 /* main.m in Sources */,
 				30821838164E616A00945A30 /* PIRAppDelegate.m in Sources */,
 				30821847164E616A00945A30 /* PIRMainViewController.m in Sources */,
-				3082184A164E616A00945A30 /* PIRFlipsideViewController.m in Sources */,
 				3076CCBC164E6D4600F63D4B /* PIRCamera.m in Sources */,
 				3076CCBF164E754700F63D4B /* PIRCameraViewController.m in Sources */,
 				3076CCC6164E938B00F63D4B /* PIRZone.m in Sources */,
@@ -428,6 +445,9 @@
 				30D625EC1650435800F50FB6 /* PIRFirstTimeViewController.m in Sources */,
 				30D625F016504F9700F50FB6 /* PIRConfig.m in Sources */,
 				3013B335165189C90004090D /* PIRNotification.m in Sources */,
+				3099B39916519C1A002CB19B /* PIRCameraCell.m in Sources */,
+				3099B39D16519C3C002CB19B /* PIRZoneCell.m in Sources */,
+				3099B3A41651A01A002CB19B /* PIRMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

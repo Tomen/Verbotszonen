@@ -6,13 +6,11 @@
 //  Copyright (c) 2012 Piratenpartei Österreichs. All rights reserved.
 //
 
-#import "PIRFlipsideViewController.h"
 #import <MapKit/MapKit.h>
 #import "PIRFirstTimeViewController.h"
 
-@interface PIRMainViewController : UITableViewController <PIRFlipsideViewControllerDelegate, UIPopoverControllerDelegate, MKMapViewDelegate, PIRFirstTimeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface PIRMainViewController : UITableViewController <UIPopoverControllerDelegate, MKMapViewDelegate, PIRFirstTimeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

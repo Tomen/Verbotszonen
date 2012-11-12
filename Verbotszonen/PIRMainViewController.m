@@ -12,11 +12,13 @@
 #import "PIRZone.h"
 #import "PIRConfig.h"
 #import "PIRDefinitions.h"
+#import "PIRMapViewController.h"
 
 @interface PIRMainViewController ()
 @property (nonatomic, strong) NSArray *allZones;
 @property (nonatomic, strong) NSArray *currentZones;
 @property (nonatomic, assign) CLLocationCoordinate2D userCoordinate;
+@property (nonatomic, strong) NSArray *cameras;
 @end
 
 @implementation PIRMainViewController
@@ -51,12 +53,14 @@
     
     [self checkFirstTime];
 
-    /*
+    
     [PIRCamera fetchAllOnComplete:^(NSArray *cameras) {
+        self.cameras = cameras;
         [self.mapView addAnnotations:cameras];
+        [self updateTable];
     }];
-     */
-     
+    
+    
     
     [PIRConfig fetchOnComplete:^(PIRConfig *config) {
         
@@ -100,35 +104,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Flipside View Controller
-
-- (void)flipsideViewControllerDidFinish:(PIRFlipsideViewController *)controller
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-        self.flipsidePopoverController = nil;
-    }
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    self.flipsidePopoverController = nil;
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showAlternate"]) {
-        [[segue destinationViewController] setDelegate:self];
         PIRWebViewController *vc = (PIRWebViewController *)segue.destinationViewController;
         vc.urlPath = PIR_URL_ABOUT;
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
-            self.flipsidePopoverController = popoverController;
-            popoverController.delegate = self;
-        }
+        vc.title = @"Info";
     }
     else if([segue.identifier isEqualToString:@"showCamera"])
     {
@@ -143,19 +125,16 @@
     else if([segue.identifier isEqualToString:@"showZoneDetails"])
     {
         PIRWebViewController *vc = (PIRWebViewController *)segue.destinationViewController;
-        vc.urlPath = sender;
+        PIRZone *zone = sender;
+        vc.urlPath = zone.description;
+        vc.title = zone.title;
+    }
+    else if([segue.identifier isEqualToString:@"showMap"])
+    {
+        PIRMapViewController *vc = (PIRMapViewController *)segue.destinationViewController;
+        vc.cameras = self.cameras;
     }
     
-}
-
-- (IBAction)togglePopover:(id)sender
-{
-    if (self.flipsidePopoverController) {
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-        self.flipsidePopoverController = nil;
-    } else {
-        [self performSegueWithIdentifier:@"showAlternate" sender:sender];
-    }
 }
 
 - (void)viewDidUnload {
@@ -236,44 +215,48 @@
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.currentZones.count;
+    return self.currentZones.count + 1; //+1 for camera
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    }
+
+    NSString *reuseIdentifier;
+    id model;
     
-    PIRZone *zone = self.currentZones[indexPath.row];
-    
-    if (zone.description) {
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    if (indexPath.row < self.currentZones.count) {
+        reuseIdentifier = @"zoneCell";
+        model = self.currentZones[indexPath.row];
     }
-    else
+    else //Camera
     {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        reuseIdentifier = @"cameraCell";
+        model = self.cameras;
     }
     
-    cell.textLabel.text = zone.title;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    [cell performSelector:@selector(setModel:) withObject:model];
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
+    [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PIRZone *zone = self.currentZones[indexPath.row];
-
-    if (zone.description) {
-        [self performSegueWithIdentifier:@"showZoneDetails" sender:zone.description];
+    if (indexPath.row < self.currentZones.count) {
+        PIRZone *zone = self.currentZones[indexPath.row];
+        
+        if (zone.description) {
+            [self performSegueWithIdentifier:@"showZoneDetails" sender:zone];
+        }
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"showMap" sender:nil];
     }
 }
 

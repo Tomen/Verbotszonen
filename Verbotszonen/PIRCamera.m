@@ -108,6 +108,24 @@
     });
 }
 
++(int)nearCameraCountForCameras:(NSArray *)cameras coordinate:(CLLocationCoordinate2D)coordinate
+{
+    if (!cameras) {
+        return 0;
+    }
+    
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    int count = 0;
+    for (PIRCamera *camera in cameras) {
+        CLLocation *compareLocation = [[CLLocation alloc] initWithLatitude:camera.coordinate.latitude longitude:camera.coordinate.longitude];
+        CLLocationDistance distance = [location distanceFromLocation:compareLocation];
+        if (distance <= 500) {
+            count++;
+        }
+    }
+    return count;
+}
+
 #pragma mark MKAnnotation
 
 -(NSString *)title
