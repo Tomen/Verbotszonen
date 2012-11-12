@@ -28,6 +28,7 @@
                     <connections>
                         <segue destination="o9K-fu-W54" kind="push" identifier="showCamera" id="UEE-SC-eNx"/>
                         <segue destination="Br4-SJ-7bm" kind="modal" identifier="showFirstTime" animates="NO" id="k10-vQ-3JI"/>
+                        <segue destination="TdY-oG-LHs" kind="push" identifier="showZoneDetails" id="J4i-I9-hrr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -75,6 +76,9 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Br4-SJ-7bm" id="hCQ-2a-TFG"/>
+                                </connections>
                             </webView>
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="vUF-LU-BuL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -98,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhJ-LX-POc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="-724"/>
+            <point key="canvasLocation" x="956" y="-1394"/>
         </scene>
         <!--Camera View Controller - Überwachungskamera-->
         <scene sceneID="efC-sp-baT">
@@ -144,6 +148,34 @@
             </objects>
             <point key="canvasLocation" x="956" y="-69"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="4qo-Ky-Ebg">
+            <objects>
+                <viewController id="TdY-oG-LHs" customClass="PIRWebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="haw-Ui-tgi">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="ZOp-fe-rn5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TdY-oG-LHs" id="4tY-v0-Vte"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ezz-CJ-hpp"/>
+                    <connections>
+                        <outlet property="webView" destination="ZOp-fe-rn5" id="dq5-ME-gQ8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NX2-6h-WaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="956" y="-741"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lTd-ac-qRl">
             <objects>
@@ -163,6 +195,42 @@
             <point key="canvasLocation" x="-109" y="182"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="PIRCameraViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRCameraViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="PIRFirstTimeViewController" superclassName="PIRWebViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRFirstTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onTapDone:"/>
+            </relationships>
+        </class>
+        <class className="PIRFlipsideViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRFlipsideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+        <class className="PIRMainViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="togglePopover:"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="PIRWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

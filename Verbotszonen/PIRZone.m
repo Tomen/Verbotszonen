@@ -131,8 +131,9 @@
 //TE: dont exactly know what this does. see: http://stackoverflow.com/questions/10109677/detect-if-a-point-is-inside-a-mkpolygon-overlay
 -(BOOL)coordinateIsWithinZone:(CLLocationCoordinate2D)coordinate
 {
-    if (!self.polygon) {
-        return NO;
+    if (!self.gpx) {
+        //if we dont have polygon data, we assume the zone is omnipresent
+        return YES;
     }
     
     MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:self.polygon];
@@ -149,15 +150,6 @@
             [result addObject:zone];
         }
     }
-    
-    //add some fake zones
-    PIRZone *beggingZone = [PIRZone new];
-    beggingZone.title = @"Betteln";
-    [result addObject:beggingZone];
-
-    PIRZone *playMusicZone = [PIRZone new];
-    playMusicZone.title = @"Musizieren";
-    [result addObject:playMusicZone];
     
     return result;
 }

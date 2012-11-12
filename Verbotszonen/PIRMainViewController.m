@@ -23,6 +23,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.clearsSelectionOnViewWillAppear = YES;
     
     CGFloat width = self.tableView.bounds.size.width;
     CGFloat mapHeight = 180;
@@ -54,11 +55,12 @@
         [self.mapView addAnnotations:cameras];
     }];
      */
+     
     
     [PIRConfig fetchOnComplete:^(PIRConfig *config) {
         
         self.allZones = config.zones;
-        
+
         for (PIRZone *zone in config.zones) {
             [zone fetchPolygonOnComplete:^(MKPolygon *polygon) {
                 [self updateTable];
@@ -133,6 +135,12 @@
         PIRFirstTimeViewController *vc = (PIRFirstTimeViewController *)segue.destinationViewController;
         vc.delegate = self;
     }
+    else if([segue.identifier isEqualToString:@"showZoneDetails"])
+    {
+        PIRWebViewController *vc = (PIRWebViewController *)segue.destinationViewController;
+        vc.urlPath = sender;
+    }
+    
 }
 
 - (IBAction)togglePopover:(id)sender
@@ -152,6 +160,7 @@
 
 #pragma mark MKMapViewDelegate
 
+/*
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -165,14 +174,14 @@
         pin.pinColor = MKPinAnnotationColorRed;
         pin.canShowCallout = YES;
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        //[rightButton addTarget:self action:@selector(onTapShowCamera:) forControlEvents:UIControlEventTouchUpInside];
         pin.rightCalloutAccessoryView = rightButton;
         return pin;
     }
     annotationView.annotation = annotation;
     return annotationView;
 }
-
+*/
+ 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     [self performSegueWithIdentifier:@"showCamera" sender:view.annotation];
@@ -194,7 +203,7 @@
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
-        self.mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.002, 0.002));
+        self.mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.001, 0.001));
         self.userCoordinate = userLocation.coordinate;
         [self updateTable];
     }
@@ -234,8 +243,33 @@
     
     PIRZone *zone = self.currentZones[indexPath.row];
     
+    if (zone.description) {
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
     cell.textLabel.text = zone.title;
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PIRZone *zone = self.currentZones[indexPath.row];
+
+    if (zone.description) {
+        [self performSegueWithIdentifier:@"showZoneDetails" sender:zone.description];
+    }
 }
 
 

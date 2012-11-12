@@ -13,6 +13,9 @@
 @end
 
 @implementation PIRWebViewController
+{
+    BOOL _didLoadFirstRequest;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,9 +26,9 @@
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
     NSURL *url = [NSURL URLWithString:self.urlPath];
     if (!url) {
@@ -49,6 +52,17 @@
 - (void)viewDidUnload {
     [self setWebView:nil];
     [super viewDidUnload];
+}
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if (!_didLoadFirstRequest) {
+        _didLoadFirstRequest = YES;
+        return YES;
+    }
+    
+    [[UIApplication sharedApplication] openURL:request.URL];
+    return NO;
 }
 
 @end
