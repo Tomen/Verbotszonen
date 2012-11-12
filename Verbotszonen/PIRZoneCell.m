@@ -21,6 +21,11 @@
 
 -(void)setModel:(PIRZone *)zone
 {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.userInteractionEnabled = NO;
+    [button setImage:[UIImage imageNamed:@"melden"] forState:UIControlStateNormal];
+    [button sizeToFit];
+    self.accessoryView = button;
     if (zone.description) {
         self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         self.selectionStyle = UITableViewCellSelectionStyleBlue;

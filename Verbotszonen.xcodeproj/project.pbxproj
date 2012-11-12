@@ -52,6 +52,8 @@
 		30D625F91650662B00F50FB6 /* bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D625F51650662B00F50FB6 /* bar@2x.png */; };
 		30D625FA1650662B00F50FB6 /* listheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D625F61650662B00F50FB6 /* listheader.png */; };
 		30D625FB1650662B00F50FB6 /* listheader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D625F71650662B00F50FB6 /* listheader@2x.png */; };
+		C54BA92C1651C1DD00D057E7 /* melden.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA92A1651C1DD00D057E7 /* melden.png */; };
+		C54BA92D1651C1DD00D057E7 /* melden@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA92B1651C1DD00D057E7 /* melden@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,8 @@
 		30D625F51650662B00F50FB6 /* bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar@2x.png"; sourceTree = "<group>"; };
 		30D625F61650662B00F50FB6 /* listheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listheader.png; sourceTree = "<group>"; };
 		30D625F71650662B00F50FB6 /* listheader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listheader@2x.png"; sourceTree = "<group>"; };
+		C54BA92A1651C1DD00D057E7 /* melden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melden.png; sourceTree = "<group>"; };
+		C54BA92B1651C1DD00D057E7 /* melden@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "melden@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,8 @@
 			children = (
 				3013B31D165177DB0004090D /* AppIcon */,
 				3076CCC2164E823F00F63D4B /* cameras.json */,
+				C54BA92A1651C1DD00D057E7 /* melden.png */,
+				C54BA92B1651C1DD00D057E7 /* melden@2x.png */,
 				30D625F41650662B00F50FB6 /* bar.png */,
 				30D625F51650662B00F50FB6 /* bar@2x.png */,
 				30D625F61650662B00F50FB6 /* listheader.png */,
@@ -406,6 +412,8 @@
 				3013B330165177E50004090D /* Icon@2x.png in Resources */,
 				3013B331165177E50004090D /* iTunesArtwork.png in Resources */,
 				3013B332165177E50004090D /* iTunesArtwork@2x.png in Resources */,
+				C54BA92C1651C1DD00D057E7 /* melden.png in Resources */,
+				C54BA92D1651C1DD00D057E7 /* melden@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
