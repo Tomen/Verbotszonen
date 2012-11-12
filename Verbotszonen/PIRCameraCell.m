@@ -16,8 +16,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        self.selectionStyle = UITableViewCellSelectionStyleBlue;
+
     }
     return self;
 }

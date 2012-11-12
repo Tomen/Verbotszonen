@@ -41,7 +41,30 @@
             }
             self.notifications = notifications;
         }
+        
+        //Sharing
+        NSDictionary *sharing = dict[@"sharing"];
+        if (sharing.count) {
+            NSString *message = dict[@"message"];
+            NSString *rawURL = dict[@"url"];
+            NSURL *url = nil;
+            if (rawURL) {
+                url = [NSURL URLWithString:rawURL];
+            }
+            
+            NSMutableArray *activityItems = [NSMutableArray array];
+            if (message) {
+                [activityItems addObject:message];
+            }
+            
+            if (url) {
+                [activityItems addObject:url];
+            }
+            
+            self.activityItems = activityItems;
+        }
     }
+    
     return self;
 }
 
