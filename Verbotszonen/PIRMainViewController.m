@@ -30,7 +30,7 @@
     self.clearsSelectionOnViewWillAppear = YES;
     
     CGFloat width = self.tableView.bounds.size.width;
-    CGFloat mapHeight = 180;
+    CGFloat mapHeight = 120;
     
     UIImageView *mapHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar.png"]];
     
@@ -50,8 +50,14 @@
     [tableHeaderView addSubview:mapHeaderView];
     [tableHeaderView addSubview:self.mapView];
     [tableHeaderView addSubview:mapFooterView];
-    
+
     self.tableView.tableHeaderView = tableHeaderView;
+    UIView *tableViewTopView = [[UIView alloc] initWithFrame:
+                         CGRectMake(0.0f, 0.0f - self.view.bounds.size.height,
+                                    320.0f, self.view.bounds.size.height)];
+    tableViewTopView.backgroundColor = [UIColor blackColor];
+	[self.tableView addSubview:tableViewTopView];
+	self.tableView.showsVerticalScrollIndicator = YES;
     
     [self checkFirstTime];
 
