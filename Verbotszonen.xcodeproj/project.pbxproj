@@ -34,7 +34,6 @@
 		3082183C164E616A00945A30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3082183B164E616A00945A30 /* Default@2x.png */; };
 		3082183E164E616A00945A30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3082183D164E616A00945A30 /* Default-568h@2x.png */; };
 		30821841164E616A00945A30 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3082183F164E616A00945A30 /* MainStoryboard_iPhone.storyboard */; };
-		30821844164E616A00945A30 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */; };
 		30821847164E616A00945A30 /* PIRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30821846164E616A00945A30 /* PIRMainViewController.m */; };
 		30821852164E616B00945A30 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821851164E616B00945A30 /* SenTestingKit.framework */; };
 		30821853164E616B00945A30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30821827164E616A00945A30 /* UIKit.framework */; };
@@ -103,7 +102,6 @@
 		3082183B164E616A00945A30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3082183D164E616A00945A30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		30821840164E616A00945A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		30821843164E616A00945A30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		30821845164E616A00945A30 /* PIRMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIRMainViewController.h; sourceTree = "<group>"; };
 		30821846164E616A00945A30 /* PIRMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIRMainViewController.m; sourceTree = "<group>"; };
 		30821850164E616B00945A30 /* VerbotszonenTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerbotszonenTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				3082183F164E616A00945A30 /* MainStoryboard_iPhone.storyboard */,
-				30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */,
 				3099B39E16519C43002CB19B /* Main */,
 				3076CCBD164E754700F63D4B /* PIRCameraViewController.h */,
 				3076CCBE164E754700F63D4B /* PIRCameraViewController.m */,
@@ -396,7 +393,6 @@
 				3082183C164E616A00945A30 /* Default@2x.png in Resources */,
 				3082183E164E616A00945A30 /* Default-568h@2x.png in Resources */,
 				30821841164E616A00945A30 /* MainStoryboard_iPhone.storyboard in Resources */,
-				30821844164E616A00945A30 /* MainStoryboard_iPad.storyboard in Resources */,
 				3076CCC3164E823F00F63D4B /* cameras.json in Resources */,
 				30D625F81650662B00F50FB6 /* bar.png in Resources */,
 				30D625F91650662B00F50FB6 /* bar@2x.png in Resources */,
@@ -498,14 +494,6 @@
 				30821840164E616A00945A30 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		30821842164E616A00945A30 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				30821843164E616A00945A30 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		3082185A164E616B00945A30 /* InfoPlist.strings */ = {
