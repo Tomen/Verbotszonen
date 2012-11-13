@@ -30,7 +30,7 @@
     self.clearsSelectionOnViewWillAppear = YES;
     
     CGFloat width = self.tableView.bounds.size.width;
-    CGFloat mapHeight = 180;
+    CGFloat mapHeight = 120;
     
     UIImageView *mapHeaderView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar.png"]];
     
@@ -39,6 +39,7 @@
     self.mapView.delegate = self;
     self.mapView.mapType = MKMapTypeHybrid;
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(47.066667, 15.433333), MKCoordinateSpanMake(0.05, 0.05));
+    self.mapView.userInteractionEnabled = NO;
     
     UIImageView *mapFooterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listheader.png"]];
     CGRect mapFooterViewFrame = mapFooterView.frame;
@@ -49,8 +50,14 @@
     [tableHeaderView addSubview:mapHeaderView];
     [tableHeaderView addSubview:self.mapView];
     [tableHeaderView addSubview:mapFooterView];
-    
+
     self.tableView.tableHeaderView = tableHeaderView;
+    UIView *tableViewTopView = [[UIView alloc] initWithFrame:
+                         CGRectMake(0.0f, 0.0f - self.view.bounds.size.height,
+                                    320.0f, self.view.bounds.size.height)];
+    tableViewTopView.backgroundColor = [UIColor blackColor];
+	[self.tableView addSubview:tableViewTopView];
+	self.tableView.showsVerticalScrollIndicator = YES;
     
     [self checkFirstTime];
 
@@ -64,7 +71,11 @@
     
     
     [PIRConfig fetchOnComplete:^(PIRConfig *config) {
-        
+
+        if (!config) {
+            [[[UIAlertView alloc] initWithTitle:@"" message:@"Bitte überprüfen Sie Ihre Internetverbindung." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+
         self.allZones = config.zones;
 
         for (PIRZone *zone in config.zones) {
@@ -131,6 +142,7 @@
     else if([segue.identifier isEqualToString:@"showZoneDetails"])
     {
         PIRWebViewController *vc = (PIRWebViewController *)segue.destinationViewController;
+        vc.cameraButtonVisible = YES;
         PIRZone *zone = sender;
         vc.urlPath = zone.description;
         vc.title = zone.title;
@@ -150,6 +162,7 @@
 
 -(void)onTapShare
 {
+    self.activityItems = @[ [NSURL URLWithString:@"http://verbotszonen.at"] ];
     UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:self.activityItems applicationActivities:nil];
     [self presentModalViewController:vc animated:YES];
 }
@@ -227,7 +240,7 @@
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.currentZones.count + 1 + (([CLLocationManager regionMonitoringAvailable] && [CLLocationManager regionMonitoringEnabled]) ? 1 : 0); //+1 for camera + 1 for zone warning
+    return self.currentZones.count + 1; //+1 for camera
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,11 +257,6 @@
     {
         reuseIdentifier = @"cameraCell";
         model = self.cameras;
-    }
-    else //Zone warning
-    {
-        reuseIdentifier = @"zoneWarningCell";
-        model = self.allZones;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
