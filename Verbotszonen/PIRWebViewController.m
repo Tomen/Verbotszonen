@@ -31,6 +31,9 @@
     self.cameraButton.hidden = !self.cameraButtonVisible;
     [self.view bringSubviewToFront:self.cameraButton];
 
+    self.view.backgroundColor = [UIColor colorWithRGBHex:0x303030];
+    self.webView.opaque = NO;
+    self.webView.backgroundColor = [UIColor clearColor];
     self.webView.scrollView.bounces = NO;
     
     NSURL *url = [NSURL URLWithString:self.urlPath];

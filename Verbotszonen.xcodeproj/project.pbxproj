@@ -57,6 +57,7 @@
 		C54BA93C1651CED500D057E7 /* beweisfoto_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA9381651CED500D057E7 /* beweisfoto_pressed@2x.png */; };
 		C54BA93D1651CED500D057E7 /* beweisfoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA9391651CED500D057E7 /* beweisfoto.png */; };
 		C54BA93E1651CED500D057E7 /* beweisfoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */; };
+		C54BA9411651DFC400D057E7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = C54BA9401651DFC400D057E7 /* UIColor+Hex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		C54BA9381651CED500D057E7 /* beweisfoto_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beweisfoto_pressed@2x.png"; sourceTree = "<group>"; };
 		C54BA9391651CED500D057E7 /* beweisfoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beweisfoto.png; sourceTree = "<group>"; };
 		C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beweisfoto@2x.png"; sourceTree = "<group>"; };
+		C54BA93F1651DFC300D057E7 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		C54BA9401651DFC400D057E7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				3076CCC0164E819F00F63D4B /* PIRDefinitions.h */,
+				C54BA93F1651DFC300D057E7 /* UIColor+Hex.h */,
+				C54BA9401651DFC400D057E7 /* UIColor+Hex.m */,
 				30821836164E616A00945A30 /* PIRAppDelegate.h */,
 				30821837164E616A00945A30 /* PIRAppDelegate.m */,
 				3076CCB5164E6C6C00F63D4B /* Presentation Layer */,
@@ -474,6 +479,7 @@
 				3099B39D16519C3C002CB19B /* PIRZoneCell.m in Sources */,
 				3099B3A41651A01A002CB19B /* PIRMapViewController.m in Sources */,
 				30B369B01651B00200C42468 /* PIRZoneWarningCell.m in Sources */,
+				C54BA9411651DFC400D057E7 /* UIColor+Hex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
