@@ -224,7 +224,7 @@
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.currentZones.count + 1 + (([CLLocationManager regionMonitoringAvailable] && [CLLocationManager regionMonitoringEnabled]) ? 1 : 0); //+1 for camera + 1 for zone warning
+    return self.currentZones.count + 1; //+1 for camera
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -241,11 +241,6 @@
     {
         reuseIdentifier = @"cameraCell";
         model = self.cameras;
-    }
-    else //Zone warning
-    {
-        reuseIdentifier = @"zoneWarningCell";
-        model = self.allZones;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
