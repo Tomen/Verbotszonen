@@ -76,11 +76,18 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Damit das nicht Wirklichkeit wird: Am 25.11.2012 Piraten wählen! Für Freiheit und Vielfalt im öffentlichen Raum und gegen Pauschalverbote!" delegate:self cancelButtonTitle:@"Mehr Informationen" otherButtonTitles:nil];
+        [alertView show];
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://piratenpartei-steiermark.at"]];
 }
 
 @end

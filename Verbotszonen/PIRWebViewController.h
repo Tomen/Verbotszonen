@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PIRWebViewController : UIViewController<UIWebViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PIRWebViewController : UIViewController<UIWebViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSString *urlPath;
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
