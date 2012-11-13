@@ -53,6 +53,10 @@
 		30D625FB1650662B00F50FB6 /* listheader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D625F71650662B00F50FB6 /* listheader@2x.png */; };
 		C54BA92C1651C1DD00D057E7 /* melden.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA92A1651C1DD00D057E7 /* melden.png */; };
 		C54BA92D1651C1DD00D057E7 /* melden@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA92B1651C1DD00D057E7 /* melden@2x.png */; };
+		C54BA93B1651CED500D057E7 /* beweisfoto_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA9371651CED500D057E7 /* beweisfoto_pressed.png */; };
+		C54BA93C1651CED500D057E7 /* beweisfoto_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA9381651CED500D057E7 /* beweisfoto_pressed@2x.png */; };
+		C54BA93D1651CED500D057E7 /* beweisfoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA9391651CED500D057E7 /* beweisfoto.png */; };
+		C54BA93E1651CED500D057E7 /* beweisfoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +134,10 @@
 		30D625F71650662B00F50FB6 /* listheader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listheader@2x.png"; sourceTree = "<group>"; };
 		C54BA92A1651C1DD00D057E7 /* melden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melden.png; sourceTree = "<group>"; };
 		C54BA92B1651C1DD00D057E7 /* melden@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "melden@2x.png"; sourceTree = "<group>"; };
+		C54BA9371651CED500D057E7 /* beweisfoto_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beweisfoto_pressed.png; sourceTree = "<group>"; };
+		C54BA9381651CED500D057E7 /* beweisfoto_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beweisfoto_pressed@2x.png"; sourceTree = "<group>"; };
+		C54BA9391651CED500D057E7 /* beweisfoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beweisfoto.png; sourceTree = "<group>"; };
+		C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beweisfoto@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +218,10 @@
 		3076CCC1164E823400F63D4B /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				C54BA9371651CED500D057E7 /* beweisfoto_pressed.png */,
+				C54BA9381651CED500D057E7 /* beweisfoto_pressed@2x.png */,
+				C54BA9391651CED500D057E7 /* beweisfoto.png */,
+				C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */,
 				3013B31D165177DB0004090D /* AppIcon */,
 				3076CCC2164E823F00F63D4B /* cameras.json */,
 				C54BA92A1651C1DD00D057E7 /* melden.png */,
@@ -410,6 +422,10 @@
 				3013B332165177E50004090D /* iTunesArtwork@2x.png in Resources */,
 				C54BA92C1651C1DD00D057E7 /* melden.png in Resources */,
 				C54BA92D1651C1DD00D057E7 /* melden@2x.png in Resources */,
+				C54BA93B1651CED500D057E7 /* beweisfoto_pressed.png in Resources */,
+				C54BA93C1651CED500D057E7 /* beweisfoto_pressed@2x.png in Resources */,
+				C54BA93D1651CED500D057E7 /* beweisfoto.png in Resources */,
+				C54BA93E1651CED500D057E7 /* beweisfoto@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
