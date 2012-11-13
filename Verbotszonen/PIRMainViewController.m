@@ -211,7 +211,9 @@
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+    //upon reactivating the app, location might still be unset.
+    //checking (userLocation.location) prevents the app from crashing.
+    if (([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) && (userLocation.location)) {
         self.mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.001, 0.001));
         self.userCoordinate = userLocation.coordinate;
         [self updateTable];
