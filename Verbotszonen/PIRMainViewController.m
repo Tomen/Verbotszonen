@@ -71,7 +71,11 @@
     
     
     [PIRConfig fetchOnComplete:^(PIRConfig *config) {
-        
+
+        if (!config) {
+            [[[UIAlertView alloc] initWithTitle:@"" message:@"Bitte überprüfen Sie Ihre Internetverbindung." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
+
         self.allZones = config.zones;
 
         for (PIRZone *zone in config.zones) {
