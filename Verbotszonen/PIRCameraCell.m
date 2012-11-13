@@ -30,6 +30,7 @@
 
 -(void)setModel:(NSArray *)cameras
 {
+    self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
     _cameras = cameras;
     int nearCameraCount = [PIRCamera nearCameraCountForCameras:self.cameras coordinate:[CLLocationManager new].location.coordinate];
     self.textLabel.text = [NSString stringWithFormat:@"%i Überwachungskameras", nearCameraCount];

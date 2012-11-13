@@ -58,6 +58,8 @@
 		C54BA93D1651CED500D057E7 /* beweisfoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA9391651CED500D057E7 /* beweisfoto.png */; };
 		C54BA93E1651CED500D057E7 /* beweisfoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */; };
 		C54BA9411651DFC400D057E7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = C54BA9401651DFC400D057E7 /* UIColor+Hex.m */; };
+		C5B569481651E85600B4D696 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B569461651E85600B4D696 /* arrow.png */; };
+		C5B569491651E85600B4D696 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5B569471651E85600B4D696 /* arrow@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,8 @@
 		C54BA93A1651CED500D057E7 /* beweisfoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beweisfoto@2x.png"; sourceTree = "<group>"; };
 		C54BA93F1651DFC300D057E7 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		C54BA9401651DFC400D057E7 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		C5B569461651E85600B4D696 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		C5B569471651E85600B4D696 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,8 @@
 		3076CCC1164E823400F63D4B /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				C5B569461651E85600B4D696 /* arrow.png */,
+				C5B569471651E85600B4D696 /* arrow@2x.png */,
 				C54BA9371651CED500D057E7 /* beweisfoto_pressed.png */,
 				C54BA9381651CED500D057E7 /* beweisfoto_pressed@2x.png */,
 				C54BA9391651CED500D057E7 /* beweisfoto.png */,
@@ -431,6 +437,8 @@
 				C54BA93C1651CED500D057E7 /* beweisfoto_pressed@2x.png in Resources */,
 				C54BA93D1651CED500D057E7 /* beweisfoto.png in Resources */,
 				C54BA93E1651CED500D057E7 /* beweisfoto@2x.png in Resources */,
+				C5B569481651E85600B4D696 /* arrow.png in Resources */,
+				C5B569491651E85600B4D696 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
