@@ -323,56 +323,6 @@
     <resources>
         <image name="beweisfoto.png" width="320" height="43"/>
     </resources>
-    <classes>
-        <class className="PIRCameraCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRCameraCell.h"/>
-        </class>
-        <class className="PIRCameraViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRCameraViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="PIRFirstTimeViewController" superclassName="PIRWebViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRFirstTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onTapDone:"/>
-            </relationships>
-        </class>
-        <class className="PIRMainViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRMainViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="PIRMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="PIRWebViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRWebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cameraButtonPressed:"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="PIRZoneCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRZoneCell.h"/>
-        </class>
-        <class className="PIRZoneWarningCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PIRZoneWarningCell.h"/>
-            <relationships>
-                <relationship kind="action" name="onValueChanged:"/>
-                <relationship kind="outlet" name="warningSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
