@@ -28,7 +28,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    self.cameraButton.hidden = !self.cameraButtonVisible;
+    [self.view bringSubviewToFront:self.cameraButton];
+
     self.webView.scrollView.bounces = NO;
     
     NSURL *url = [NSURL URLWithString:self.urlPath];
@@ -42,6 +44,7 @@
     }
     
     [self.webView loadRequest:urlRequest];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,8 +65,22 @@
         return YES;
     }
     
-    [[UIApplication sharedApplication] openURL:request.URL];
     return NO;
+}
+
+- (IBAction)cameraButtonPressed:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePicker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

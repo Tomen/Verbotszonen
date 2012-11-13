@@ -133,6 +133,7 @@
     else if([segue.identifier isEqualToString:@"showZoneDetails"])
     {
         PIRWebViewController *vc = (PIRWebViewController *)segue.destinationViewController;
+        vc.cameraButtonVisible = YES;
         PIRZone *zone = sender;
         vc.urlPath = zone.description;
         vc.title = zone.title;
