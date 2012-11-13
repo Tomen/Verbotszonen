@@ -158,6 +158,7 @@
 
 -(void)onTapShare
 {
+    self.activityItems = @[ [NSURL URLWithString:@"http://verbotszonen.at"] ];
     UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:self.activityItems applicationActivities:nil];
     [self presentModalViewController:vc animated:YES];
 }
